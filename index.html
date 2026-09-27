@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Estuda Menos, Aprende Mais</title>
+<style>
+:root{
+  --navy:#1b3a5c; --navy-dark:#0e1f33; --gold:#c9992c; --gold-light:#f0cd82;
+  --cream:#fbf9f5; --cream2:#f3ead9; --orange:#ff9128; --orange-dark:#d6641a;
+  --red:#d63c37; --green:#25be6e; --green-dark:#149650;
+  --text:#232323; --gray:#6b6b6b; --card:#ffffff;
+  --bg:var(--cream);
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:inherit; margin:0; padding:0;}
+html{scroll-behavior:smooth; scroll-padding-top:env(safe-area-inset-top,0px);}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background:var(--bg); color:var(--text); line-height:1.5; overflow-x:hidden;
+  padding-bottom:calc(86px + env(safe-area-inset-bottom,0px));
+}
+img,svg{max-width:100%;}
+.wrap{max-width:520px; margin:0 auto; padding:0 22px;}
+a{text-decoration:none;}
+
+/* ---------- Ribbon ---------- */
+.ribbon{background:var(--red); color:#fff; text-align:center; font-weight:800;
+  font-size:14px; letter-spacing:.5px; padding:10px 12px;}
+
+/* ---------- Hero ---------- */
+.hero{background:linear-gradient(180deg,var(--navy) 0%,var(--navy-dark) 100%); color:#fff;
+  padding:38px 0 46px; text-align:center; position:relative; overflow:hidden;}
+.hero::before{content:""; position:absolute; top:-120px; right:-120px; width:320px; height:320px;
+  border-radius:50%; background:radial-gradient(circle,rgba(255,255,255,.08),transparent 70%);}
+.kicker{display:inline-block; background:var(--gold); color:var(--navy-dark); font-weight:800;
+  font-size:12px; letter-spacing:1.5px; padding:8px 18px; border-radius:20px; margin-bottom:18px;}
+.hero h1{font-size:2.2rem; font-weight:800; line-height:1.15; margin-bottom:14px;}
+.hero p.sub{font-size:1.05rem; color:#dbe4ee; max-width:400px; margin:0 auto 26px;}
+.stars{color:var(--gold); font-size:1.1rem; letter-spacing:2px; margin-bottom:6px;}
+.rating-txt{font-size:.85rem; color:#c8d4e0; margin-bottom:26px;}
+
+.book-mock{width:190px; height:230px; margin:0 auto 8px; border-radius:10px; background:var(--navy);
+  border:3px solid var(--gold); position:relative; box-shadow:0 18px 34px rgba(0,0,0,.35);
+  display:flex; flex-direction:column; justify-content:center; align-items:center; padding:16px;
+  transform:rotate(-2deg);}
+.book-mock .t1{font-weight:800; font-size:1.15rem; text-align:center; line-height:1.2;}
+.book-mock .t2{font-size:.72rem; color:#cfd9e4; text-align:center; margin-top:10px;}
+.book-mock .pdf{position:absolute; bottom:14px; background:var(--gold); color:var(--navy-dark);
+  font-weight:800; font-size:.7rem; padding:5px 14px; border-radius:8px; letter-spacing:1px;}
+
+.cta-btn{display:inline-flex; align-items:center; gap:10px; justify-content:center;
+  background:linear-gradient(180deg,var(--green),var(--green-dark)); color:#fff; font-weight:800;
+  font-size:1.05rem; padding:18px 30px; border-radius:50px; box-shadow:0 10px 22px rgba(20,150,80,.35);
+  width:100%; max-width:380px; margin:26px auto 0;}
+.cta-btn svg{width:20px; height:20px; flex:none;}
+
+/* ---------- Pain section ---------- */
+.pain{padding:44px 0 10px; text-align:center;}
+.pain h2{font-size:1.5rem; color:var(--navy); font-weight:800; margin-bottom:16px;}
+.pain-list{display:flex; flex-direction:column; gap:12px; text-align:left; margin-top:18px;}
+.pain-item{background:#fff; border-left:4px solid var(--red); border-radius:10px; padding:14px 16px;
+  font-size:.95rem; color:var(--text); box-shadow:0 4px 14px rgba(0,0,0,.04);}
+
+/* ---------- Section shared ---------- */
+section{padding:38px 0;}
+.section-title{font-size:1.5rem; font-weight:800; color:var(--navy); text-align:center; margin-bottom:26px;}
+
+/* ---------- Benefits ---------- */
+.benefits{background:var(--cream2);}
+.benefit{display:flex; gap:14px; align-items:flex-start; margin-bottom:20px;}
+.check{flex:none; width:30px; height:30px; border-radius:50%; background:var(--green);
+  display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; font-size:.9rem;}
+.benefit p{font-size:1rem; color:var(--text);}
+
+/* ---------- Techniques grid ---------- */
+.grid{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+.tcard{background:var(--navy); border:1.5px solid var(--gold); border-radius:14px; padding:18px 10px;
+  text-align:center; color:#fff;}
+.tcard .ic{font-size:1.6rem; margin-bottom:8px;}
+.tcard .lab{font-weight:800; font-size:.9rem; margin-bottom:4px;}
+.tcard .sub{font-size:.72rem; color:var(--gold-light);}
+
+/* ---------- Testimonials ---------- */
+.testi{background:#fff; border-radius:16px; padding:20px; box-shadow:0 6px 18px rgba(0,0,0,.06); margin-bottom:16px;}
+.testi-head{display:flex; align-items:center; gap:12px; margin-bottom:10px;}
+.avatar{width:42px; height:42px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  color:#fff; font-weight:800; flex:none;}
+.testi-name{font-weight:800; font-size:.95rem; color:var(--navy);}
+.testi-stars{color:var(--gold); font-size:.8rem;}
+.testi p.quote{font-style:italic; font-size:.92rem; color:var(--text);}
+
+/* ---------- Pricing ---------- */
+.pricing{background:linear-gradient(180deg,var(--navy),var(--navy-dark)); color:#fff; text-align:center;}
+.pricing .section-title{color:#fff;}
+.price-card{background:#fff; color:var(--text); border-radius:20px; padding:28px 20px; max-width:340px;
+  margin:0 auto; box-shadow:0 14px 30px rgba(0,0,0,.25);}
+.old-price{color:var(--gray); text-decoration:line-through; font-size:1.1rem;}
+.new-price{font-size:3rem; font-weight:800; color:var(--navy-dark); margin:4px 0;}
+.discount-tag{color:var(--red); font-weight:800; font-size:.9rem;}
+.guarantee{margin-top:22px; font-size:.85rem; color:var(--gold-light); display:flex; align-items:center;
+  justify-content:center; gap:8px;}
+.pay-methods{margin-top:14px; font-size:.8rem; color:#c8d4e0;}
+
+/* ---------- Footer ---------- */
+footer{padding:30px 0 40px; text-align:center; font-size:.78rem; color:var(--gray);}
+
+/* ---------- Sticky CTA ---------- */
+.sticky-bar{position:fixed; left:0; right:0; bottom:0; background:#fff; box-shadow:0 -6px 18px rgba(0,0,0,.12);
+  padding:12px 18px calc(12px + env(safe-area-inset-bottom,0px)); display:flex; align-items:center;
+  justify-content:space-between; gap:14px; z-index:50;}
+.sticky-bar .p{font-weight:800; color:var(--navy); font-size:1.05rem;}
+.sticky-bar .p span{display:block; font-size:.68rem; color:var(--gray); font-weight:400;}
+.sticky-cta-btn{background:var(--green); color:#fff; font-weight:800; font-size:.9rem; padding:13px 20px;
+  border-radius:40px; white-space:nowrap;}
+
+@media (min-width:480px){ .hero h1{font-size:2.5rem;} }
+</style>
+</head>
+<body>
+
+<div class="ribbon">🔥 OFERTA POR TEMPO LIMITADO — TERMINA ESTA SEMANA</div>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="kicker">NOVO E-BOOK</span>
+    <h1>Estuda Menos,<br>Aprende Mais</h1>
+    <p class="sub">O método simples para ter bons resultados nos estudos sem passar o dia inteiro a decorar.</p>
+    <div class="book-mock">
+      <div class="t1">ESTUDA MENOS,<br>APRENDE MAIS</div>
+      <div class="t2">Guia prático de técnicas de estudo</div>
+      <div class="pdf">PDF</div>
+    </div>
+    <div class="stars">★★★★★</div>
+    <div class="rating-txt">4.9/5 — avaliado por estudantes</div>
+    <a href="#comprar" class="cta-btn">
+      <svg viewBox="0 0 24 24" fill="white"><path d="M12 1a5 5 0 00-5 5v3H6a2 2 0 00-2 2v9a2 2 0 002 2h12a2 2 0 002-2v-9a2 2 0 00-2-2h-1V6a5 5 0 00-5-5zm-3 8V6a3 3 0 016 0v3H9z"/></svg>
+      Quero o meu exemplar
+    </a>
+  </div>
+</header>
+
+<section class="pain">
+  <div class="wrap">
+    <h2>Já passaste por isto?</h2>
+    <div class="pain-list">
+      <div class="pain-item">📖 Estudas horas seguidas e no dia do exame esqueces tudo.</div>
+      <div class="pain-item">😩 Sentes que estudas muito, mas as notas não melhoram.</div>
+      <div class="pain-item">⏰ Deixas tudo para a véspera e depois entras em pânico.</div>
+    </div>
+  </div>
+</section>
+
+<section class="benefits">
+  <div class="wrap">
+    <h2 class="section-title">O que vais encontrar<br>neste e-book</h2>
+    <div class="benefit"><div class="check">✓</div><p>6 capítulos práticos e diretos, sem enrolação — só o que funciona.</p></div>
+    <div class="benefit"><div class="check">✓</div><p>Técnicas comprovadas: Pomodoro, recordação ativa e revisão espaçada.</p></div>
+    <div class="benefit"><div class="check">✓</div><p>Guia passo a passo para as duas últimas semanas antes do exame.</p></div>
+    <div class="benefit"><div class="check">✓</div><p>Modelo de plano de estudo semanal, pronto a preencher.</p></div>
+  </div>
+</section>
+
+<section class="techniques">
+  <div class="wrap">
+    <h2 class="section-title">As técnicas por dentro</h2>
+    <div class="grid">
+      <div class="tcard"><div class="ic">⏱️</div><div class="lab">Pomodoro</div><div class="sub">25 min de foco</div></div>
+      <div class="tcard"><div class="ic">💡</div><div class="lab">Recordação Ativa</div><div class="sub">Testa-te a ti mesmo</div></div>
+      <div class="tcard"><div class="ic">🗺️</div><div class="lab">Mapas Mentais</div><div class="sub">Organiza as ideias</div></div>
+      <div class="tcard"><div class="ic">📅</div><div class="lab">Plano Semanal</div><div class="sub">Estuda com rotina</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="wrap">
+    <h2 class="section-title">O que dizem os leitores</h2>
+    <div class="testi">
+      <div class="testi-head">
+        <div class="avatar" style="background:#c95a78">M.</div>
+        <div><div class="testi-name">Maimuna, 12ª classe</div><div class="testi-stars">★★★★★</div></div>
+      </div>
+      <p class="quote">"Comecei a usar o Pomodoro e em uma semana já sentia mais foco. Recomendo!"</p>
+    </div>
+    <div class="testi">
+      <div class="testi-head">
+        <div class="avatar" style="background:#3c8cc8">J.</div>
+        <div><div class="testi-name">João, universitário</div><div class="testi-stars">★★★★★</div></div>
+      </div>
+      <p class="quote">"O plano semanal ajudou-me a organizar os estudos sem perder o dia todo nisso."</p>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="comprar">
+  <div class="wrap">
+    <h2 class="section-title">Garante já o teu</h2>
+    <div class="price-card">
+      <div class="old-price">250 MT</div>
+      <div class="new-price">125 MT</div>
+      <div class="discount-tag">OFERTA DE LANÇAMENTO · 50% OFF</div>
+      <a href="#" class="cta-btn" style="margin-top:22px;">
+        <svg viewBox="0 0 24 24" fill="white"><path d="M12 1a5 5 0 00-5 5v3H6a2 2 0 00-2 2v9a2 2 0 002 2h12a2 2 0 002-2v-9a2 2 0 00-2-2h-1V6a5 5 0 00-5-5zm-3 8V6a3 3 0 016 0v3H9z"/></svg>
+        Comprar agora — pagamento seguro
+      </a>
+    </div>
+    <div class="guarantee">🛡️ Satisfação garantida</div>
+    <div class="pay-methods">Pagamento via M-Pesa · e-Mola · Envio imediato em PDF</div>
+  </div>
+</section>
+
+<footer>Estuda Menos, Aprende Mais — Guia prático de técnicas de estudo</footer>
+
+<div class="sticky-bar">
+  <div class="p">125 MT <span>oferta de lançamento</span></div>
+  <a href="#comprar" class="sticky-cta-btn">Comprar agora</a>
+</div>
+
+</body>
+</html>
